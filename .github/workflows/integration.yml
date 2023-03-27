@@ -12,3 +12,8 @@ jobs:
         with:
           git_repo_url: https://github.com/yunwei37/GIS-image-vis
           api_key: ${{ secrets.OPENAI_API_KEY }}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: .
