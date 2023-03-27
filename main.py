@@ -18,7 +18,7 @@ def main():
     # 处理文件和翻译
     translate_files(repo_path, config["SOURCE_LANGUAGE"], config["TARGET_LANGUAGE"], config["API_KEY"], "")
     # 提交和推送更改
-    os.system(f"rm -rf {repo_path}/.git && mv -R  {repo_path}/* . && rm -rf {repo_path}")
+    os.system(f"rm -rf {repo_path}/.git && mv {repo_path}/* . && rm -rf {repo_path}")
 
 if __name__ == "__main__":
     main()
