@@ -1,0 +1,4 @@
+local_repo
+__pycache__
+.pytest_cache
+local_path
