@@ -5,10 +5,10 @@ class ConfigurationError(Exception):
 
 def load_config():
     config = {
-        "GIT_REPO_URL": os.environ.get("GIT_REPO_URL", ""),
-        "SOURCE_LANGUAGE": os.environ.get("SOURCE_LANGUAGE", "en"),
-        "TARGET_LANGUAGE": os.environ.get("TARGET_LANGUAGE", "zh"),
-        "API_KEY": os.environ.get("API_KEY", "")
+        "INPUT_GIT_REPO_URL": os.environ.get("GIT_REPO_URL", ""),
+        "INPUT_SOURCE_LANGUAGE": os.environ.get("SOURCE_LANGUAGE", "en"),
+        "INPUT_TARGET_LANGUAGE": os.environ.get("TARGET_LANGUAGE", "zh"),
+        "INPUT_API_KEY": os.environ.get("API_KEY", "")
     }
 
     missing_keys = [key for key, value in config.items() if not value]

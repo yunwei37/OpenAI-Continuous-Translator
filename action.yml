@@ -1,0 +1,11 @@
+name: "OpenAI Continuous Translation Action"
+description: "Continuous Translate your repo with an action"
+author: "yunwei37"
+inputs:
+  git_repo_url:
+    description: "The git repo url to clone and translate"
+  api_key:
+    description: "The OpenAI api key to use for translation"
+runs:
+  using: "docker"
+  image: "Dockerfile"

@@ -1,6 +1,6 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-name: Continuous Translation
+name: Continuous Translation test
 
 on:
   push:
@@ -34,10 +34,10 @@ jobs:
       run: |
         python main.py
       env:
-        GIT_REPO_URL: ${{ secrets.GIT_REPO_URL }}
+        GIT_REPO_URL: ${{ secrets.INPUT_GIT_REPO_URL }}
         SOURCE_LANGUAGE: en
         TARGET_LANGUAGE: zh
-        API_KEY: ${{ secrets.API_KEY }}
+        API_KEY: ${{ secrets.INPUT_API_KEY }}
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
