@@ -17,7 +17,7 @@ def main():
     clone_repository(config["GIT_REPO_URL"], repo_path)
     # 处理文件和翻译
     translate_files(repo_path, config)
-    # 提交和推送更改
+    # move files to root
     os.system(f"rm -rf {repo_path}/.git && mv {repo_path}/* . && rm -rf {repo_path}")
 
 if __name__ == "__main__":

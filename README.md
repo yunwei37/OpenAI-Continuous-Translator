@@ -3,39 +3,23 @@
 [![Continuous Translation test](https://github.com/yunwei37/OpenAI-Continuous-Translator/actions/workflows/translation.yml/badge.svg)](https://github.com/yunwei37/OpenAI-Continuous-Translator/actions/workflows/translation.yml)
 [![Integration Test](https://github.com/yunwei37/OpenAI-Continuous-Translator/actions/workflows/integration.yml/badge.svg)](https://github.com/yunwei37/OpenAI-Continuous-Translator/actions/workflows/integration.yml)
 
-OpenAI-Continuous-Translator is an open-source project that enables continuous translation in multiple formats and languages, including code comments, using OpenAI's API.
-
-## Github Actions
-
-You can translate your repo with Github Actions. Just add the following to your `.github/workflows/continuous-translation.yml` file:
-
-```yaml
-    - uses: actions/checkout@v3
-    - uses: yunwei37/OpenAI-Continuous-Translator@master
-      with:
-          git_repo_url: https://github.com/yourname/yourrepo
-          api_key: ${{ secrets.OPENAI_API_KEY }}
-    - name: Add & Commit
-      uses: EndBug/add-and-commit@v9.1.1
-```
-
-## What is Continuous Translation?
-
-Continuous translation is the practice of automating the translation of new content as it is created, allowing for seamless communication across different languages and cultures. By integrating with version control systems like Git, continuous translation ensures that translations are always up-to-date with the latest content, reducing the time and effort required for manual translation.
+OpenAI-Continuous-Translator is an open-source project that enables continuous translation in multiple formats and languages, including code comments, using OpenAI's API in your `GitHub Action`.
 
 ## Github Action
 
+You can translate your repo with Github Actions:
+
 1. Add the following to your github action:
 
-```
-    - uses: actions/checkout@v3
-    - uses: yunwei37/OpenAI-Continuous-Translator@master
-      with:
-          git_repo_url: https://github.com/yourname/reponame
-          api_key: ${{ secrets.OPENAI_API_KEY }}
-    - name: Add & Commit
-      uses: EndBug/add-and-commit@v9.1.1
-```
+  ```yml
+      - uses: actions/checkout@v3
+      - uses: yunwei37/OpenAI-Continuous-Translator@master
+        with:
+            git_repo_url: https://github.com/yourname/reponame
+            api_key: ${{ secrets.OPENAI_API_KEY }}
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v9.1.1
+  ```
 
 2. set the secrets for GitHub Actions
 
@@ -48,15 +32,28 @@ To use secrets in GitHub Actions, follow these steps:
 
 ## Features
 
-- Continuous translation across multiple formats and languages
+- Translation of multiple file formats, including HTML, rst, txt, and Markdown...
+
+```
+
+```
+
+- Translation of code comments in multiple languages, including Python, Java, and JavaScript...
 - Automatic detection of changes to Git repositories
-- Translation of code comments
 - Configurable options, such as Git repository URL, source and target languages, and API key
 - Detailed logging to track translation progress and debug issues
+
+## What is Continuous Translation?
+
+Continuous translation is the practice of automating the translation of new content as it is created, allowing for seamless communication across different languages and cultures. By integrating with version control systems like Git, continuous translation ensures that translations are always up-to-date with the latest content, reducing the time and effort required for manual translation.
 
 ## Getting Started
 
 ### Run with docker
+
+```shell
+docker run -e INPUT_GIT_REPO_URL="https://github.com/yourname/reponame" INPUT_API_KEY="your_api_key" -v /path/to/your/repo:/app yunwei37/openai-continuous-translator:latest
+```
 
 ### Run with python
 

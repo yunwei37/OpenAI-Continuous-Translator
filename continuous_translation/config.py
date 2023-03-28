@@ -14,8 +14,7 @@ def load_config():
         "ADDITIONAL_PROMPT": os.environ.get("INPUT_ADDITIONAL_PROMPT", ""),
     }
 
-    missing_keys = [key for key, value in config.items() if not value]
-
+    missing_keys = not config["API_KEY"] or not config["GIT_REPO_URL"]
     if missing_keys:
         raise ConfigurationError(
             f"Missing required environment variables: {', '.join(missing_keys)}")

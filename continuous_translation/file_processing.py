@@ -2,7 +2,7 @@ import os
 import logging
 from continuous_translation.translation import get_prompt_based_on_file_type, translate
 
-
+# 合并较小的段落
 def merge_paragraphs(paragraphs, max_length):
     merged = []
     current_paragraph = ""
@@ -19,11 +19,11 @@ def merge_paragraphs(paragraphs, max_length):
 
     return merged
 
-
+# 翻译文件
 def translate_files(repo_path, config):
     return process_files(repo_path, config, translate)
 
-
+# 处理文件并翻译
 def process_files(repo_path: str, config, translate_func: str):
     source_language: str = config["SOURCE_LANGUAGE"]
     target_language: str = config["TARGET_LANGUAGE"]
@@ -64,3 +64,7 @@ def process_files(repo_path: str, config, translate_func: str):
             with open(translated_file_path, "w") as f:
                 f.write(translated)
             logging.info("File saved.")
+
+# remove .git folder and move files to root
+def move_files_to_target(repo_path, target_path):
+    os.system(f"rm -rf {repo_path}/.git && mv {repo_path}/* {target_path} && rm -rf {repo_path}")
