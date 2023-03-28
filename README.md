@@ -34,11 +34,76 @@ To use secrets in GitHub Actions, follow these steps:
 
 - Translation of multiple file formats, including HTML, rst, txt, and Markdown...
 
-```
+  For example, a Markdown file:
 
-```
+  ```markdown
+  - **提示工程技术**:
+  - [一个提示模式目录，增强 ChatGPT 的提示工程](https://arxiv.org/abs/2302.11382) [2023] (Arxiv)
+  - [让硬提示容易：基于梯度的离散优化方法来进行提示调整和发现](https://arxiv.org/abs/2302.03668) [2023] (Arxiv)。- [合成提示：为大型语言模型生成思路演示](https://arxiv.org/abs/2302.00618) [2023] (Arxiv)
+  - [渐进提示：用于语言模型的连续学习](https://arxiv.org/abs/2301.12314) [2023] (Arxiv)
+  - [批量提示：使用 LLM API 进行高效推理](https://arxiv.org/abs/2301.08721) [2023] (Arxiv)
+  - [连续提示用于解答复杂问题](https://arxiv.org/abs/2212.04092) [2022] (Arxiv)
+  - [结构化提示：将上下文学习扩展到 1,000 个示例](https://arxiv.org/abs/2212.06713) [2022] (Arxiv)
+  - [大型语言模型是人类级的提示工程师](https://arxiv.org/abs/2211.01910) [2022] (Arxiv)
+  - [问我：一个为提示语言模型设计的简单策略](https://paperswithcode.com/paper/ask-me-anything-a-simple-strategy-for) [2022] (Arxiv)
+  - [提示 GPT-3 成为可靠的模型](https://arxiv.org/abs/2210.09150) [2022](Arxiv)
+  - [分解提示：一种解决复杂任务的模块化方法](https://arxiv.org/abs/2210.02406) [2022] (Arxiv)
+  ```
+
+  is translated from English to Chinese:
+
+  ```markdown
+  - **Prompt Engineering Techniques**:
+  - [A Prompt Pattern Catalog to Enhance Prompt Engineering with ChatGPT](https://arxiv.org/abs/2302.11382) [2023] (Arxiv)
+  - [Hard Prompts Made Easy: Gradient-Based Discrete Optimization for Prompt Tuning and Discovery](https://arxiv.org/abs/2302.03668) [2023] (Arxiv)
+  - [Synthetic Prompting: Generating Chain-of-Thought Demonstrations for Large Language Models](https://arxiv.org/abs/2302.00618) [2023] (Arxiv) 
+  - [Progressive Prompts: Continual Learning for Language Models](https://arxiv.org/abs/2301.12314) [2023] (Arxiv) 
+  - [Batch Prompting: Efficient Inference with LLM APIs](https://arxiv.org/abs/2301.08721) [2023] (Arxiv)
+  - [Successive Prompting for Decompleting Complex Questions](https://arxiv.org/abs/2212.04092) [2022] (Arxiv) 
+  - [Structured Prompting: Scaling In-Context Learning to 1,000 Examples](https://arxiv.org/abs/2212.06713) [2022] (Arxiv) 
+  - [Large Language Models Are Human-Level Prompt Engineers](https://arxiv.org/abs/2211.01910) [2022] (Arxiv) 
+  - [Ask Me Anything: A simple strategy for prompting language models](https://paperswithcode.com/paper/ask-me-anything-a-simple-strategy-for) [2022] (Arxiv) 
+  - [Prompting GPT-3 To Be Reliable](https://arxiv.org/abs/2210.09150) [2022](Arxiv) 
+  - [Decomposed Prompting: A Modular Approach for Solving Complex Tasks](https://arxiv.org/abs/2210.02406) [2022] (Arxiv) 
+  ```
 
 - Translation of code comments in multiple languages, including Python, Java, and JavaScript...
+
+  For example, a Linux kernel code comment:
+
+  ```c
+    /* MEM points to BPF ring buffer reservation. */
+    MEM_RINGBUF		= BIT(2 + BPF_BASE_TYPE_BITS),
+
+    /* MEM is in user address space. */
+    MEM_USER		= BIT(3 + BPF_BASE_TYPE_BITS),
+
+    /* MEM is a percpu memory. MEM_PERCPU tags PTR_TO_BTF_ID. When tagged
+    * with MEM_PERCPU, PTR_TO_BTF_ID _cannot_ be directly accessed. In
+    * order to drop this tag, it must be passed into bpf_per_cpu_ptr()
+    * or bpf_this_cpu_ptr(), which will return the pointer corresponding
+    * to the specified cpu.
+    */
+    MEM_PERCPU		= BIT(4 + BPF_BASE_TYPE_BITS),
+  ```
+
+  will be translated into Chinese:
+
+  ```c
+  /* MEM 指向 BPF 环形缓冲区预留。*/
+  MEM_RINGBUF		= BIT(2 + BPF_BASE_TYPE_BITS),
+
+  /* MEM 在用户地址空间中。 */
+  MEM_USER		= BIT(3 + BPF_BASE_TYPE_BITS),
+
+  /* MEM 是 percpu 内存。MEM_PERCPU 标记 PTR_TO_BTF_ID。
+  * 被标记为 MEM_PERCPU 的 PTR_TO_BTF_ID 不能直接访问。
+  * 为了去除此标记，必须将其传递到 bpf_per_cpu_ptr() 或 bpf_this_cpu_ptr()，
+  * 这将返回与指定 cpu 相对应的指针。
+  */
+  MEM_PERCPU		= BIT(4 + BPF_BASE_TYPE_BITS),
+  ```
+
 - Automatic detection of changes to Git repositories
 - Configurable options, such as Git repository URL, source and target languages, and API key
 - Detailed logging to track translation progress and debug issues

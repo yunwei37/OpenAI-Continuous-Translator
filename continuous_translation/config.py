@@ -1,6 +1,5 @@
 import os
 
-
 class ConfigurationError(Exception):
     pass
 

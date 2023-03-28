@@ -6,7 +6,7 @@ MARKDOWN_PROMPT = """
 Your task is to translate a Markdown file, while preserving the original formatting,
 including inline elements like links and images. Make sure to ignore HTML tags and code blocks,
 but translate code comments. Be cautious when translating Markdown links,
-Markdown images, and Markdown headings. Make sure TOC links in (#xxx) are translated.
+Markdown images, and Markdown headings. Make sure TOC links like (#content) are translated.
 """
 
 RST_PROMPT = """
@@ -28,11 +28,17 @@ Make sure to translate the content in Markdown and raw text cells, but leave the
 except for code comments, which should be translated. Be cautious when translating links, images, and headings.
 """
 
-CODE_PROMPT = """
-Your task is to translate code comments, while preserving the original formatting.
+PYTHON_CODE_PROMPT = """
+Your task is to translate code comments, while preserving the original code formatting.
 Make sure to translate the content inside code comments, but leave the code unchanged.
+Be cautious when translating imports, variables, and keywords.
 """
 
+CODE_PROMPT = """
+Your task is to translate code comments, while preserving the original code formatting.
+Make sure to translate the content inside code comments, but leave the code unchanged.
+Be cautious when translating imports, variables, and keywords.
+"""
 
 def get_prompt_based_on_file_type(file_path: str) -> str:
     if file_path.endswith(".txt"):
@@ -45,6 +51,8 @@ def get_prompt_based_on_file_type(file_path: str) -> str:
         return HTML_PROMPT
     elif file_path.endswith(".ipynb"):
         return NOTEBOOK_PROMPT
+    elif file_path.endswith(".py"):
+        return PYTHON_CODE_PROMPT
     else:
         return CODE_PROMPT + f"The file name is {file_path}. You can infer the file type from the file name."
 
@@ -55,9 +63,8 @@ def translate(text: str, source_language: str, target_language: str, api_key: st
     while retries > 0:
         try:
             system_prompt = f"You are a helpful assistant that translates {source_language} to {target_language}. {file_prompt}"
-            user_prompt = f"""Translate the following {source_language} text to {target_language} 
-while maintaining the original formatting: "{text}". 
-Return only the translated content, not including the original text."""
+            user_prompt = f"""Instruction: Translate the following {source_language} text to {target_language} while maintaining the original formatting: "{text}". 
+Format: Return only the translated content, not including the original text. NO any other formatting or descriptions."""
             logging.info(f"Translating paragraphs: {text}")
             logging.info(f"System prompt: {system_prompt}")
             logging.info(f"User prompt: {user_prompt}")
@@ -66,6 +73,7 @@ Return only the translated content, not including the original text."""
             # 调用 ChatGPT API
             completion = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
+                temperature=0.2,
                 messages=[
                     {
                         "role": "system",
