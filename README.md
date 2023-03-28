@@ -6,6 +6,29 @@ OpenAI-Continuous-Translator is an open-source project that enables continuous t
 
 Continuous translation is the practice of automating the translation of new content as it is created, allowing for seamless communication across different languages and cultures. By integrating with version control systems like Git, continuous translation ensures that translations are always up-to-date with the latest content, reducing the time and effort required for manual translation.
 
+## Github Action
+
+1. Add the following to your github action:
+
+```
+    - uses: actions/checkout@v3
+    - uses: yunwei37/OpenAI-Continuous-Translator@master
+      with:
+          git_repo_url: https://github.com/yourname/reponame
+          api_key: ${{ secrets.OPENAI_API_KEY }}
+    - name: Add & Commit
+      uses: EndBug/add-and-commit@v9.1.1
+```
+
+2. set the secrets for GitHub Actions
+
+To use secrets in GitHub Actions, follow these steps:
+
+- First, create a secret. on the GitHub repository page, go to the "Settings" tab.
+- In the left-hand navigation bar, click on "Secrets".
+- Click the "New repository secret" button.
+- Enter a key name and the corresponding value, and click "Add secret".
+
 ## Features
 
 - Continuous translation across multiple formats and languages
