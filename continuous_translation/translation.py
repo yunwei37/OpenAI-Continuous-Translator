@@ -43,7 +43,7 @@ Be cautious when translating imports, variables, and keywords.
 def get_prompt_based_on_file_type(file_path: str) -> str:
     if file_path.endswith(".txt"):
         return "Your task is to translate structured text. This is a txt file."
-    elif file_path.endswith(".md"):
+    elif file_path.endswith((".md", ".mdx")):
         return MARKDOWN_PROMPT
     elif file_path.endswith(".rst"):
         return RST_PROMPT

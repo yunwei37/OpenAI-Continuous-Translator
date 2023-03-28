@@ -27,7 +27,7 @@ inputs:
   file_types:
     description: "The file types to translate. The default is all file types supported"
     required: false
-    default: 'md,rst,txt,py,js,json,html,cpp,c,ipynb'
+    default: 'md,mdx,rst,txt,py,js,json,html,cpp,c,ipynb'
   file_path_filter:
     description: "The file path filter to translate. The default is all files"
     required: false

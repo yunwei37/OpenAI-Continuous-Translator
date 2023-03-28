@@ -12,7 +12,7 @@ def load_config():
         "API_KEY": os.environ.get("INPUT_API_KEY", ""),
         "I18N_SURFIX": os.environ.get("INPUT_I18N_SURFIX", ""),
         "ADDITIONAL_PROMPT": os.environ.get("INPUT_ADDITIONAL_PROMPT", ""),
-        "FILE_TYPES": os.environ.get("INPUT_FILE_TYPES", "md,rst,txt,py,js,json,html,cpp,c,ipynb"),
+        "FILE_TYPES": os.environ.get("INPUT_FILE_TYPES", "md,mdx,rst,txt,py,js,json,html,cpp,c,ipynb"),
         "FILE_PATHS_FILTER": os.environ.get("INPUT_FILE_PATHS_FILTER", ".*"),
     }
 
