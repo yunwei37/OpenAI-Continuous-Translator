@@ -56,15 +56,15 @@ def get_prompt_based_on_file_type(file_path: str) -> str:
     else:
         return CODE_PROMPT + f"The file name is {file_path}. You can infer the file type from the file name."
 
-
 def translate(text: str, source_language: str, target_language: str, api_key: str, file_prompt="") -> str:
     openai.api_key = api_key
     retries = 3
     while retries > 0:
         try:
             system_prompt = f"You are a helpful assistant that translates {source_language} to {target_language}. {file_prompt}"
-            user_prompt = f"""Instruction: Translate the following {source_language} text to {target_language} while maintaining the original formatting: "{text}". 
-Format: Return only the translated content, not including the original text. NO any other formatting or descriptions."""
+            user_prompt = f"""Translate the following {source_language} text to {target_language} 
+while maintaining the original formatting: "{text}". 
+Return only the translated content, not including the original text."""
             logging.info(f"Translating paragraphs: {text}")
             logging.info(f"System prompt: {system_prompt}")
             logging.info(f"User prompt: {user_prompt}")
@@ -73,7 +73,6 @@ Format: Return only the translated content, not including the original text. NO 
             # 调用 ChatGPT API
             completion = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
-                temperature=0.2,
                 messages=[
                     {
                         "role": "system",
