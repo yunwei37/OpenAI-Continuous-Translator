@@ -7,6 +7,15 @@ from continuous_translation import file_processing
 def simple_translate(text, source_language, target_language, api_key, prompt):
     return text.replace("test", "测试").replace("Test", "测试")
 
+
+CONFIG_TEST = {
+    "SOURCE_LANGUAGE": "en",
+    "TARGET_LANGUAGE": "zh",
+    "API_KEY": "test",
+    "ADDITIONAL_PROMPT": ""
+}
+
+
 class TestFileProcessing(TestCase):
 
     def test_process_files(self):
@@ -24,9 +33,8 @@ class TestFileProcessing(TestCase):
                 file_path = os.path.join(tmpdir, filename)
                 with open(file_path, "w") as f:
                     f.write(content)
-
             # 调用 process_files 函数
-            file_processing.process_files(tmpdir, "", "", "",  simple_translate, "")
+            file_processing.process_files(tmpdir, CONFIG_TEST, simple_translate)
 
             # 检查翻译后的文件是否存在并验证其内容
             for filename, original_content in test_files.items():
@@ -36,7 +44,8 @@ class TestFileProcessing(TestCase):
                 # 检查翻译后的文件内容
                 with open(translated_file_path, "r") as f:
                     content = f.read()
-                expected_content = original_content.replace("test", "测试").replace("Test", "测试")
+                expected_content = original_content.replace(
+                    "test", "测试").replace("Test", "测试")
                 self.assertEqual(content, expected_content)
 
     def test_process_files_complex(self):
@@ -45,10 +54,12 @@ class TestFileProcessing(TestCase):
             test_file = "test_complex.md"
             test_file_path = os.path.join(tmpdir, test_file)
             with open(test_file_path, "w") as f:
-                f.write("This is a test file.\n\n\nThis is another paragraph.\n\nThis is a third paragraph.")
+                f.write(
+                    "This is a test file.\n\n\nThis is another paragraph.\n\nThis is a third paragraph.")
 
             # 调用 process_files 函数
-            file_processing.process_files(tmpdir, "", "", "", simple_translate, "")
+            file_processing.process_files(
+                tmpdir, CONFIG_TEST, simple_translate)
 
             # 检查翻译后的文件是否存在
             translated_file_path = os.path.join(tmpdir, test_file)
@@ -57,4 +68,5 @@ class TestFileProcessing(TestCase):
             # 检查翻译后的文件内容
             with open(translated_file_path, "r") as f:
                 content = f.read()
-            self.assertEqual(content, "This is a 测试 file.\n\n\nThis is another paragraph.\n\nThis is a third paragraph.")
+            self.assertEqual(
+                content, "This is a 测试 file.\n\n\nThis is another paragraph.\n\nThis is a third paragraph.")

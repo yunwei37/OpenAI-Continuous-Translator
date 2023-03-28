@@ -6,6 +6,7 @@ from continuous_translation import git_integration
 git_repo_url = "https://github.com/radi-cho/awesome-gpt4"
 local_repo_path = "test_repo"
 
+
 @pytest.fixture(scope="module")
 def repo():
     if os.path.exists(local_repo_path):

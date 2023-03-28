@@ -1,6 +1,7 @@
 import os
 import logging
 
+
 def clone_repository(repo_url, local_path):
     """
     克隆远程仓库到本地路径。
@@ -10,9 +11,9 @@ def clone_repository(repo_url, local_path):
         repo = os.system(f'git clone "{repo_url}" "{local_path}"')
         logging.info(f"Repository cloned to {local_path}.")
     else:
-        logging.warning("local_repo already exists, skipping the clone process.")
-        repo = pygit2.Repository(local_path)
-    return repo
+        logging.warning(
+            "local_repo already exists, skipping the clone process.")
+
 
 def delete_local_repository(local_path):
     """

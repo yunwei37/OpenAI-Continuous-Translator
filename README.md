@@ -5,6 +5,20 @@
 
 OpenAI-Continuous-Translator is an open-source project that enables continuous translation in multiple formats and languages, including code comments, using OpenAI's API.
 
+## Github Actions
+
+You can translate your repo with Github Actions. Just add the following to your `.github/workflows/continuous-translation.yml` file:
+
+```yaml
+    - uses: actions/checkout@v3
+    - uses: yunwei37/OpenAI-Continuous-Translator@master
+      with:
+          git_repo_url: https://github.com/yourname/yourrepo
+          api_key: ${{ secrets.OPENAI_API_KEY }}
+    - name: Add & Commit
+      uses: EndBug/add-and-commit@v9.1.1
+```
+
 ## What is Continuous Translation?
 
 Continuous translation is the practice of automating the translation of new content as it is created, allowing for seamless communication across different languages and cultures. By integrating with version control systems like Git, continuous translation ensures that translations are always up-to-date with the latest content, reducing the time and effort required for manual translation.

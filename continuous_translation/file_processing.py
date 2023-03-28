@@ -20,10 +20,15 @@ def merge_paragraphs(paragraphs, max_length):
     return merged
 
 
-def translate_files(repo_path, source_language, target_language, api_key, additional_prompt=""):
-    return process_files(repo_path, source_language, target_language, api_key, translate, additional_prompt)
+def translate_files(repo_path, config):
+    return process_files(repo_path, config, translate)
 
-def process_files(repo_path: str, source_language: str, target_language: str, api_key: str, translate_func: str, additional_prompt: str):
+
+def process_files(repo_path: str, config, translate_func: str):
+    source_language: str = config["SOURCE_LANGUAGE"]
+    target_language: str = config["TARGET_LANGUAGE"]
+    api_key: str = config["API_KEY"]
+    additional_prompt: str = config["ADDITIONAL_PROMPT"]
     # 遍历文件
     for root, _, files in os.walk(repo_path):
         for file in files:
@@ -54,7 +59,6 @@ def process_files(repo_path: str, source_language: str, target_language: str, ap
 
             # 保存翻译后的文件
             translated_file_path = os.path.join(root, f"{file}")
-
 
             logging.info(f"Saving translated file: {translated_file_path}")
             with open(translated_file_path, "w") as f:

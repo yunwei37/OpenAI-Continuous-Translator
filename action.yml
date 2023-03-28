@@ -6,6 +6,12 @@ inputs:
     description: "The git repo url to clone and translate"
   api_key:
     description: "The OpenAI api key to use for translation"
+  source_language:
+    description: "The source language to translate from. The default is English"
+  target_language:
+    description: "The target language to translate to. The default is Chinese"
+  additional_prompt: 
+    description: "Additional prompt to improve performance."
 runs:
   using: "docker"
   image: "Dockerfile"

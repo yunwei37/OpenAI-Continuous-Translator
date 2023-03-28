@@ -16,7 +16,7 @@ def main():
     # 克隆仓库
     clone_repository(config["GIT_REPO_URL"], repo_path)
     # 处理文件和翻译
-    translate_files(repo_path, config["SOURCE_LANGUAGE"], config["TARGET_LANGUAGE"], config["API_KEY"], "")
+    translate_files(repo_path, config)
     # 提交和推送更改
     os.system(f"rm -rf {repo_path}/.git && mv {repo_path}/* . && rm -rf {repo_path}")
 
