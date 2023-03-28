@@ -1,5 +1,8 @@
 # OpenAI-Continuous-Translator
 
+[![Continuous Translation test](https://github.com/yunwei37/OpenAI-Continuous-Translator/actions/workflows/translation.yml/badge.svg)](https://github.com/yunwei37/OpenAI-Continuous-Translator/actions/workflows/translation.yml)
+[![Integration Test](https://github.com/yunwei37/OpenAI-Continuous-Translator/actions/workflows/integration.yml/badge.svg)](https://github.com/yunwei37/OpenAI-Continuous-Translator/actions/workflows/integration.yml)
+
 OpenAI-Continuous-Translator is an open-source project that enables continuous translation in multiple formats and languages, including code comments, using OpenAI's API.
 
 ## What is Continuous Translation?
@@ -27,7 +30,7 @@ To use secrets in GitHub Actions, follow these steps:
 - First, create a secret. on the GitHub repository page, go to the "Settings" tab.
 - In the left-hand navigation bar, click on "Secrets".
 - Click the "New repository secret" button.
-- Enter a key name and the corresponding value, and click "Add secret".
+- Enter a key name and the corresponding value, and click "Add secret". Add a secret name `OPENAI_API_KEY`.
 
 ## Features
 
@@ -39,12 +42,16 @@ To use secrets in GitHub Actions, follow these steps:
 
 ## Getting Started
 
+### Run with docker
+
+### Run with python
+
 To use OpenAI-Continuous-Translator, simply follow these steps:
 
 1. Clone this repository to your local machine
-2. Set up your OpenAI API key and Git repository URL in the `config.py` file
+2. Set up your OpenAI API key and Git repository URL in the env
 3. Install the required dependencies using `pip install -r requirements.txt`
-4. Run the program using `python src/main.py`
+4. Run the program using `python main.py`
 
 OpenAI-Continuous-Translator will automatically detect changes to your Git repository and translate the new content into your desired language.
 
