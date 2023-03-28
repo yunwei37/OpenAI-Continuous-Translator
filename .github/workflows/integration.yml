@@ -10,8 +10,10 @@ jobs:
         # Put your action repo here
         uses: yunwei37/OpenAI-Continuous-Translator@master
         with:
-          git_repo_url: https://github.com/yunwei37/GIS-image-vis
+          git_repo_url: https://github.com/yunwei37/OpenAI-Continuous-Translator
           api_key: ${{ secrets.OPENAI_API_KEY }}
+          i18n_surfix: _zh
+          file_types: md
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:

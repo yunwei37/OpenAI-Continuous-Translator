@@ -12,6 +12,12 @@ inputs:
     description: "The target language to translate to. The default is Chinese"
   additional_prompt: 
     description: "Additional prompt to improve performance."
+  i18n_surfix:
+    description: "The i18n surfix to add to the translated file. The default is empty, so the translated file will overwrite the original file."
+  file_types:
+    description: "The file types to translate. The default is all file types supported"
+  file_path_filter:
+    description: "The file path filter to translate. The default is all files"
 runs:
   using: "docker"
   image: "Dockerfile"

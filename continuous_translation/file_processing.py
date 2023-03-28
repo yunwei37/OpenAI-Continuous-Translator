@@ -1,5 +1,6 @@
 import os
 import logging
+import re
 from continuous_translation.translation import get_prompt_based_on_file_type, translate
 
 # 合并较小的段落
@@ -32,7 +33,9 @@ def process_files(repo_path: str, config, translate_func: str):
     # 遍历文件
     for root, _, files in os.walk(repo_path):
         for file in files:
-            if not file.endswith((".md", ".rst", ".txt", ".py", ".js", ".json", ".html", ".cpp", ".c", ".ipynb")):
+            if re.match(config["FILE_PATHS_FILTER"], file) is None:
+                continue
+            if not file.endswith(tuple(config["FILE_TYPES"].split(","))):
                 continue
             file_path = os.path.join(root, file)
             logging.info(f"Processing file: {file_path}")

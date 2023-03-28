@@ -3,7 +3,7 @@
 [![Continuous Translation test](https://github.com/yunwei37/OpenAI-Continuous-Translator/actions/workflows/translation.yml/badge.svg)](https://github.com/yunwei37/OpenAI-Continuous-Translator/actions/workflows/translation.yml)
 [![Integration Test](https://github.com/yunwei37/OpenAI-Continuous-Translator/actions/workflows/integration.yml/badge.svg)](https://github.com/yunwei37/OpenAI-Continuous-Translator/actions/workflows/integration.yml)
 
-OpenAI-Continuous-Translator is an open-source project that enables continuous translation in multiple formats and languages, including code comments, using OpenAI's API in your `GitHub Action`.
+OpenAI-Continuous-Translator is an open-source project that enables continuous translation(Or internationalization, i18n) in multiple formats and languages, including code comments, using OpenAI's `ChatGPT/GPT4` API in your `GitHub Action`.
 
 ## Github Action
 
@@ -21,6 +21,8 @@ You can translate your repo with Github Actions:
         uses: EndBug/add-and-commit@v9.1.1
   ```
 
+  The `git_repo_url` does not always need to be the current repo. You can either make a mirror repo from the original one, or you internationalize the original repo.
+
 2. set the secrets for GitHub Actions
 
 To use secrets in GitHub Actions, follow these steps:
@@ -31,6 +33,8 @@ To use secrets in GitHub Actions, follow these steps:
 - Enter a key name and the corresponding value, and click "Add secret". Add a secret name `OPENAI_API_KEY`.
 
 ## Features
+
+For the translation result of GPT, please refer to [Is-ChatGPT-A-Good-Translator](https://github.com/wxjiao/Is-ChatGPT-A-Good-Translator).
 
 - Translation of multiple file formats, including HTML, rst, txt, and Markdown...
 
@@ -106,6 +110,27 @@ To use secrets in GitHub Actions, follow these steps:
 
 - Automatic detection of changes to Git repositories
 - Configurable options, such as Git repository URL, source and target languages, and API key
+
+  ```yml
+  inputs:
+    git_repo_url:
+      description: "The git repo url to clone and translate"
+    api_key:
+      description: "The OpenAI api key to use for translation"
+    source_language:
+      description: "The source language to translate from. The default is English"
+    target_language:
+      description: "The target language to translate to. The default is Chinese"
+    additional_prompt: 
+      description: "Additional prompt to improve performance."
+    i18n_surfix:
+      description: "The i18n surfix to add to the translated file. The default is empty, so the translated file will overwrite the original file."
+    file_types:
+      description: "The file types to translate. The default is all file types supported"
+    file_path_filter:
+      description: "The file path filter to translate. The default is all files"
+  ```
+
 - Detailed logging to track translation progress and debug issues
 
 ## What is Continuous Translation?
