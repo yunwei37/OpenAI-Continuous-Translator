@@ -7,8 +7,8 @@ class ConfigurationError(Exception):
 def load_config():
     config = {
         "GIT_REPO_URL": os.environ.get("INPUT_GIT_REPO_URL", ""),
-        "SOURCE_LANGUAGE": os.environ.get("INPUT_SOURCE_LANGUAGE", "en"),
-        "TARGET_LANGUAGE": os.environ.get("INPUT_TARGET_LANGUAGE", "zh"),
+        "SOURCE_LANGUAGE": os.environ.get("INPUT_SOURCE_LANGUAGE", "English"),
+        "TARGET_LANGUAGE": os.environ.get("INPUT_TARGET_LANGUAGE", "Chinese"),
         "API_KEY": os.environ.get("INPUT_API_KEY", ""),
         "I18N_SURFIX": os.environ.get("INPUT_I18N_SURFIX", ""),
         "ADDITIONAL_PROMPT": os.environ.get("INPUT_ADDITIONAL_PROMPT", ""),

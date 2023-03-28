@@ -62,9 +62,9 @@ def translate(text: str, source_language: str, target_language: str, api_key: st
     while retries > 0:
         try:
             system_prompt = f"You are a helpful assistant that translates {source_language} to {target_language}. {file_prompt}"
-            user_prompt = f"""Translate the following {source_language} text to {target_language} 
-while maintaining the original formatting: "{text}". 
-Return only the translated content, not including the original text."""
+            user_prompt = f"""Instructions: Translate the following {source_language} text to {target_language} 
+while maintaining the original formatting: "{text}".
+format: Return only the translated content, not including the original text."""
             logging.info(f"Translating paragraphs: {text}")
             logging.info(f"System prompt: {system_prompt}")
             logging.info(f"User prompt: {user_prompt}")
