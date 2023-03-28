@@ -4,20 +4,34 @@ author: "yunwei37"
 inputs:
   git_repo_url:
     description: "The git repo url to clone and translate"
+    required: true
   api_key:
     description: "The OpenAI api key to use for translation"
+    required: true
   source_language:
     description: "The source language to translate from. The default is English"
+    required: false
+    default: 'English'
   target_language:
     description: "The target language to translate to. The default is Chinese"
+    required: false
+    default: 'Chinese'
   additional_prompt: 
     description: "Additional prompt to improve performance."
+    required: false
+    default: ''
   i18n_surfix:
     description: "The i18n surfix to add to the translated file. The default is empty, so the translated file will overwrite the original file."
+    required: false
+    default: ''
   file_types:
     description: "The file types to translate. The default is all file types supported"
+    required: false
+    default: 'md,rst,txt,py,js,json,html,cpp,c,ipynb'
   file_path_filter:
     description: "The file path filter to translate. The default is all files"
+    required: false
+    default: '.*'
 runs:
   using: "docker"
   image: "Dockerfile"
