@@ -17,7 +17,6 @@ CONFIG_TEST = {
     "FILE_TYPES": "md,rst,txt,py,js,json,html,cpp,c,ipynb"
 }
 
-
 class TestFileProcessing(TestCase):
 
     def test_process_files(self):
@@ -80,6 +79,7 @@ class TestFileProcessing(TestCase):
                 "test.md": "This is a test file.",
                 "test.jpg": "This is a test image file.",
                 ".gitignore": "This is a test gitignore file.",
+                "ssss": "This is a test file.",
             }
 
             for filename, content in test_files.items():

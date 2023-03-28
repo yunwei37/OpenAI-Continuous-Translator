@@ -9,6 +9,7 @@ def clone_repository(repo_url, local_path):
     if not os.path.exists(local_path):
         logging.info("Cloning repository...")
         os.system(f'git clone "{repo_url}" "{local_path}"')
+        os.system(f"rm -rf {local_path}/.git")
         logging.info(f"Repository cloned to {local_path}.")
     else:
         logging.warning(
