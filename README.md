@@ -17,8 +17,6 @@ You can translate your repo with Github Actions:
         with:
             git_repo_url: https://github.com/yourname/reponame
             api_key: ${{ secrets.OPENAI_API_KEY }}
-      - name: Add & Commit
-        uses: EndBug/add-and-commit@v9.1.1
   ```
 
   The `git_repo_url` does not always need to be the current repo. You can either make a mirror repo from the original one, or you internationalize the original repo.
@@ -31,6 +29,42 @@ To use secrets in GitHub Actions, follow these steps:
 - In the left-hand navigation bar, click on "Secrets".
 - Click the "New repository secret" button.
 - Enter a key name and the corresponding value, and click "Add secret". Add a secret name `OPENAI_API_KEY`.
+
+You can use [create-pull-request](https://github.com/peter-evans/create-pull-request) to create a PR for your repo:
+```yml
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4
+```
+
+Or add and commit:
+
+```yml
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v9.1.1
+```
+
+### Example
+
+Here is a complete example:
+
+```yml
+name: Continuous Translation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: yunwei37/OpenAI-Continuous-Translator@master
+      with:
+          git_repo_url: https://github.com/radi-cho/awesome-gpt4
+          api_key: ${{ secrets.OPENAI_API_KEY }}
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4
+```
 
 ## Features
 
