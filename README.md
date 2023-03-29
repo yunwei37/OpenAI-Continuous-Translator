@@ -30,17 +30,17 @@ To use secrets in GitHub Actions, follow these steps:
 - Click the "New repository secret" button.
 - Enter a key name and the corresponding value, and click "Add secret". Add a secret name `OPENAI_API_KEY`.
 
-You can use [create-pull-request](https://github.com/peter-evans/create-pull-request) to create a PR for your repo:
-```yml
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v4
-```
-
-Or add and commit:
+You can add and commit the result:
 
 ```yml
       - name: Add & Commit
         uses: EndBug/add-and-commit@v9.1.1
+```
+
+And use [create-pull-request](https://github.com/peter-evans/create-pull-request) to create a PR for your repo:
+```yml
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4
 ```
 
 ### Example
