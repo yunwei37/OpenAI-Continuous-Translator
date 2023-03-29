@@ -52,19 +52,29 @@ name: Continuous Translation
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 1' # At 00:00 on Monday
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: yunwei37/OpenAI-Continuous-Translator@master
+    - uses: yunwei37/OpenAI-Continuous-Translator@translate
       with:
           git_repo_url: https://github.com/radi-cho/awesome-gpt4
           api_key: ${{ secrets.OPENAI_API_KEY }}
+    - name: Add & Commit
+      uses: EndBug/add-and-commit@v9.1.1
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
 ```
+
+The complete workflow is roughly as follows:
+
+1. Spend two minutes configuring the corresponding API key and desired settings in the CI, as well as GitHub permissions.
+2. GitHub Actions can periodically check the upstream repository for new changes, and if there are any, it will pull down the corresponding change and translate it.
+3. The action will automatically submit the translated changes as a pull request in the current repository, which will be reviewed and proofread by humans before being merged.
 
 ## Features
 
