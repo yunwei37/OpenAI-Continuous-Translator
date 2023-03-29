@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: yunwei37/OpenAI-Continuous-Translator@translate
+    - uses: yunwei37/OpenAI-Continuous-Translator@master
       with:
           git_repo_url: https://github.com/radi-cho/awesome-gpt4
           api_key: ${{ secrets.OPENAI_API_KEY }}
