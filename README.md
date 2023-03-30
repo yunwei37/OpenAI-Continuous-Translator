@@ -5,6 +5,16 @@
 
 OpenAI-Continuous-Translator is an open-source project that enables continuous translation (Or internationalization, i18n) in multiple formats and languages, including code comments, using OpenAI's `ChatGPT/GPT4` API in your `GitHub Action`.
 
+Support file format:
+
+- Markdown
+- rst
+- txt
+- HTML
+- jupyter notebook
+- cpp/c/python/js (code comments)
+- others are comming soon...
+
 ## 🔧 Setup the github action
 
 ### Repository Settings
