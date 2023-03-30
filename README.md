@@ -1,11 +1,32 @@
-# OpenAI-Continuous-Translator
+# 🌎 OpenAI-Continuous-Translator
 
 [![Continuous Translation test](https://github.com/yunwei37/OpenAI-Continuous-Translator/actions/workflows/translation.yml/badge.svg)](https://github.com/yunwei37/OpenAI-Continuous-Translator/actions/workflows/translation.yml)
 [![Integration Test](https://github.com/yunwei37/OpenAI-Continuous-Translator/actions/workflows/integration.yml/badge.svg)](https://github.com/yunwei37/OpenAI-Continuous-Translator/actions/workflows/integration.yml)
 
-OpenAI-Continuous-Translator is an open-source project that enables continuous translation(Or internationalization, i18n) in multiple formats and languages, including code comments, using OpenAI's `ChatGPT/GPT4` API in your `GitHub Action`.
+OpenAI-Continuous-Translator is an open-source project that enables continuous translation (Or internationalization, i18n) in multiple formats and languages, including code comments, using OpenAI's `ChatGPT/GPT4` API in your `GitHub Action`.
 
-## Github Action
+## 🔧 Setup the github action
+
+### Repository Settings
+
+#### 1. Settings > Actions > General
+
+- Enable `Read and write permissions`
+- Enable `Allow GitHub Actions to create and approve pull requests`
+![permissions](https://user-images.githubusercontent.com/69892552/228692074-d8d009a8-9272-4023-97b1-3cbc637d5d84.jpg)
+
+#### 2. Settings > Secrets and variables > Actions
+
+- Set API key(`OPENAI_API_KEY`) to secrets
+![secrets](https://user-images.githubusercontent.com/69892552/228692421-22d7db33-4e32-4f28-b166-45b4d3ce2b11.jpg)
+
+### GitHub Actions Workflow Settings
+
+#### Required
+
+- Provide the OPENAI_API_KEY as apiKey.
+- Set `on` to trigger when a comment is created (`types: [ created ]`).
+- Checkout in advance(`actions/checkout@v3`).
 
 You can translate your repo with Github Actions:
 
@@ -20,15 +41,6 @@ You can translate your repo with Github Actions:
   ```
 
   The `git_repo_url` does not always need to be the current repo. You can either make a mirror repo from the original one, or you internationalize the original repo.
-
-2. set the secrets for GitHub Actions
-
-To use secrets in GitHub Actions, follow these steps:
-
-- First, create a secret. on the GitHub repository page, go to the "Settings" tab.
-- In the left-hand navigation bar, click on "Secrets".
-- Click the "New repository secret" button.
-- Enter a key name and the corresponding value, and click "Add secret". Add a secret name `OPENAI_API_KEY`.
 
 You can add and commit the result:
 
@@ -69,6 +81,11 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
 ```
+
+The translated repo example maybe:
+
+- https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN
+- https://github.com/yunwei37/awesome-gpt4-zh-CN
 
 The complete workflow is roughly as follows:
 
@@ -194,7 +211,7 @@ docker run -e INPUT_GIT_REPO_URL="https://github.com/yourname/reponame" INPUT_AP
 To use OpenAI-Continuous-Translator, simply follow these steps:
 
 1. Clone this repository to your local machine
-2. Set up your OpenAI API key and Git repository URL in the env
+2. Set up your OpenAI API key and Git repository URL in the env 
 3. Install the required dependencies using `pip install -r requirements.txt`
 4. Run the program using `python main.py`
 
