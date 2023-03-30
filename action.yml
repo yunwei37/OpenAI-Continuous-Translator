@@ -1,6 +1,7 @@
 name: "OpenAI Continuous Translation Action"
 description: "Continuous Translate your repo with an action"
 author: "yunwei37"
+icon: book-open
 inputs:
   git_repo_url:
     description: "The git repo url to clone and translate"
